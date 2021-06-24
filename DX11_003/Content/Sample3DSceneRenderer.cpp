@@ -3,6 +3,7 @@
 
 #include "..\Common\DirectXHelper.h"
 
+#include <winuser.h>
 using namespace DX11_003;
 
 using namespace DirectX;
@@ -63,6 +64,10 @@ void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 	static const XMVECTORF32 up = { 0.0f, 1.0f, 0.0f, 0.0f };
 
 	XMStoreFloat4x4(&m_constantBufferData.view, XMMatrixTranspose(XMMatrixLookAtRH(eye, at, up)));
+
+	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixIdentity());
+	XMStoreFloat4x4(&m_movementMatrix, XMMatrixIdentity());
+
 }
 
 // 프레임당 한 번 호출됩니다. 큐브를 회전하고 모델 및 뷰 매트릭스를 계산합니다.
@@ -75,15 +80,49 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 		double totalRotation = timer.GetTotalSeconds() * radiansPerSecond;
 		float radians = static_cast<float>(fmod(totalRotation, XM_2PI));
 
-		Rotate(radians);
+		Movement();
+		//Rotate(0.001f);
 	}
 }
 
 // 3D 큐브 모델에 라디안 설정 값을 회전합니다.
 void Sample3DSceneRenderer::Rotate(float radians)
 {
+	XMMATRIX modelMatrix = XMLoadFloat4x4(&m_constantBufferData.model);
+
+	XMMATRIX rotateMatrix = XMMatrixTranspose(XMMatrixRotationY(radians));
+
 	// 업데이트된 모델 매트릭스를 셰이더에 전달하도록 준비합니다.
-	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
+	XMStoreFloat4x4(&m_constantBufferData.model, modelMatrix * rotateMatrix);
+}
+
+void DX11_003::Sample3DSceneRenderer::Movement()
+{
+	//키 들어가야 됨
+
+	float xAxis = 0.0f;
+	float yAxis = 0.0f;
+	float zAxis = -0.01f;
+
+	//XMMATRIX modelMatrix = XMLoadFloat4x4(&m_movementMatrix);
+	//
+	//XMMATRIX moveMatrix = XMMatrixTranslation(xAxis, yAxis, zAxis);
+
+	////modelMatrix *= moveMatrix;	
+	//modelMatrix = moveMatrix;	
+
+	//XMStoreFloat4x4(&m_movementMatrix, modelMatrix);
+	//GetAsyncKeyState();
+
+
+
+	//m_constantBufferData.worldmatrix = m_movementMatrix;
+
+	//m_constantBufferData.position = XMFLOAT4(xAxis, yAxis, zAxis, 1.0f);
+	m_constantBufferData.position.x += xAxis;
+	m_constantBufferData.position.y += yAxis;
+	m_constantBufferData.position.z += zAxis;
+	
 }
 
 void Sample3DSceneRenderer::StartTracking()

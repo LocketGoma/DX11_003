@@ -8,6 +8,8 @@ namespace DX11_003
 		DirectX::XMFLOAT4X4 model;
 		DirectX::XMFLOAT4X4 view;
 		DirectX::XMFLOAT4X4 projection;
+		//DirectX::XMFLOAT4X4 worldmatrix;
+		DirectX::XMFLOAT4 position;
 	};
 
 	// 꼭짓점별 데이터를 꼭짓점 셰이더로 보내는 데 사용됩니다.

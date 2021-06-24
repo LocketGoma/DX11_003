@@ -24,6 +24,7 @@ namespace DX11_003
 
 	private:
 		void Rotate(float radians);
+		void Movement();
 
 	private:
 		// 디바이스 리소스에 대한 캐시된 포인터입니다.
@@ -40,11 +41,17 @@ namespace DX11_003
 		// 큐브 기하 도형의 시스템 리소스입니다.
 		ModelViewProjectionConstantBuffer	m_constantBufferData;
 		uint32	m_indexCount;
+		DirectX::XMFLOAT4X4 m_movementMatrix;
+
 
 		// 렌더링 루프에 사용되는 변수입니다.
 		bool	m_loadingComplete;
 		float	m_degreesPerSecond;
 		bool	m_tracking;
+
+
+	
+
 	};
 }
 

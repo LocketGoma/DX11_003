@@ -8,13 +8,13 @@
       <UniqueIdentifier>dbf8dbe2-ec7f-46d6-97ee-1e84c913f295</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
-	<Filter Include="내용">
+    <Filter Include="내용">
       <UniqueIdentifier>a81d7f80-8fe1-4af8-b11a-846a275edda5</UniqueIdentifier>
     </Filter>
     <ClInclude Include="Common\DirectXHelper.h">
       <Filter>공용</Filter>
     </ClInclude>
-	<ClInclude Include="Common\StepTimer.h">
+    <ClInclude Include="Common\StepTimer.h">
       <Filter>공용</Filter>
     </ClInclude>
     <ClInclude Include="Common\DeviceResources.h">
@@ -23,7 +23,7 @@
     <ClCompile Include="Common\DeviceResources.cpp">
       <Filter>공용</Filter>
     </ClCompile>
-	<ClInclude Include="Content\Sample3DSceneRenderer.h">
+    <ClInclude Include="Content\Sample3DSceneRenderer.h">
       <Filter>내용</Filter>
     </ClInclude>
     <ClInclude Include="Content\SampleFpsTextRenderer.h">
@@ -32,13 +32,13 @@
     <ClInclude Include="Content\ShaderStructures.h">
       <Filter>내용</Filter>
     </ClInclude>
-	<ClCompile Include="Content\Sample3DSceneRenderer.cpp">
+    <ClCompile Include="Content\Sample3DSceneRenderer.cpp">
       <Filter>내용</Filter>
     </ClCompile>
     <ClCompile Include="Content\SampleFpsTextRenderer.cpp">
       <Filter>내용</Filter>
     </ClCompile>
-	<FxCompile Include="Content\SamplePixelShader.hlsl">
+    <FxCompile Include="Content\SamplePixelShader.hlsl">
       <Filter>내용</Filter>
     </FxCompile>
     <FxCompile Include="Content\SampleVertexShader.hlsl">
@@ -62,5 +62,35 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>자산</Filter>
     </Image>
+    <Filter Include="작업">
+      <UniqueIdentifier>{9c3c700b-ab27-4faa-a780-b78966602143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="작업\01.타겟 큐브">
+      <UniqueIdentifier>{32d07fdc-6ade-4e7d-9f46-6236bf1ce751}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="DX11_003Main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="TargetCube.cpp">
+      <Filter>작업\01.타겟 큐브</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="DX11_003Main.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="TargetCube.h">
+      <Filter>작업\01.타겟 큐브</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>자산</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
 </Project>
